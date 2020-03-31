@@ -7,10 +7,10 @@ LDIR=../lib
 
 LIBS=-lm
 
-#_DEPS = hellomake.h
-#DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+_DEPS = location.h misc.h object.h
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o
+_OBJ = main.o location.o misc.o object.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
