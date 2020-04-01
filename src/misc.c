@@ -14,6 +14,17 @@ OBJECT *parseObject(const char *noun) {
 	return found;
 }
 
+OBJECT *personHere(void) {
+	OBJECT *obj;
+
+	for (obj = objs; obj < endOfObjs; obj++) {
+		if (obj->location == player->location && obj == guard) {
+			return obj;
+		}
+	}
+	return NULL;
+}
+
 int listOfObjectsAtLocation(OBJECT *location) {
 	int count = 0;
 	OBJECT *obj;
@@ -28,4 +39,14 @@ int listOfObjectsAtLocation(OBJECT *location) {
 	}
 
 	return count;
+}
+
+OBJECT *getPassageTo(OBJECT *targetLocation) {
+	OBJECT *obj;
+	for (obj = objs; obj < endOfObjs; obj++) {
+		if (obj->location == player->location && obj->destination == targetLocation) {
+			return obj;
+		}
+	}
+	return NULL;
 }
