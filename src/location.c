@@ -27,21 +27,24 @@ void executeLook(const char *noun) {
 
 void executeGo(const char *noun) {
 	OBJECT *obj = parseObject(noun);
+	DISTANCE distance = distanceTo(obj);
 
-	if (obj == NULL) {
+	if (distance >= distUnknownObject) {
 		printf("I don't understand where you want to go.\n");
-	} else if (obj == player->location) {
+	} else if (distance == distLocation) {
 		printf("You are already there");
-	} else if (getPassageTo(obj) != NULL) {
+	} else if (distance == distOverthere) {
 		printf("Ok.\n");
 		player->location = obj;
 		executeLook("around");
-	} else if (obj->location == player->location && obj->destination != NULL) {
+	} else if (distance == distHere && obj->destination != NULL) {
 		printf("Ok.\n");
 		player->location = obj->destination;
 		executeLook("around");
+	} else if (distance < distNotHere) {
+		printf("You cannot get any closer than this.\n");
 	} else {
-		printf("You cannot go there.\n");
+		printf("You do not see any %s here.\n", noun);
 	}
 	
 }
