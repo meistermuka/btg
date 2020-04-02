@@ -71,3 +71,16 @@ DISTANCE distanceTo(OBJECT *obj) {
 		obj->location->location == player->location	? distHereContained :
 													  distNotHere;
 }
+
+int weightOfContents(OBJECT *container) {
+	int sum = 0;
+	OBJECT *obj;
+
+	for (obj = objs; obj < endOfObjs; obj++) {
+		if (obj->location == container) {
+			sum += obj->weight;
+		}
+	}
+
+	return sum;
+}
