@@ -66,7 +66,7 @@ function outputRecord(separator)
          print "\t\t" prop["description"] ",";
          print "\t\ttags" count ",";
          print "\t\t" prop["location"] ",";
-         print "\t\t" prop["destination"];
+         print "\t\t" prop["destination"] ",";
          print "\t\t" prop[prop["prospect"] ? "prospect" : "destination"] ",";
          print "\t\t" prop["details"] ",";
          print "\t\t" prop["contents"] ",";

@@ -58,7 +58,7 @@ void executeGo(const char *noun) {
 		printf("You are already there");
 	} else if (distance == distOverthere) {
 		movePlayer(getPassageTo(obj));
-	} else if (distance == distHere && obj->destination != NULL) {
+	} else if (distance == distHere) {
 		movePlayer(obj);
 	} else if (distance < distNotHere) {
 		printf("You cannot get any closer than this.\n");
